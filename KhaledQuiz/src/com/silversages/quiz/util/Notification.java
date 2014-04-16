@@ -9,8 +9,8 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 
 import com.silversages.quiz.QuizApp;
+import com.silversages.quiz.R;
 import com.silversages.quiz.activities.Dashboard;
-import com.silversages.quiz.activities.R;
 
 public class Notification {
 
@@ -48,7 +48,7 @@ public class Notification {
 				.getSystemService(Context.NOTIFICATION_SERVICE);
 
 		// mId allows you to update the notification later on.
-		
+
 		mNotificationManager.notify(notifyID, mBuilder.build());
 
 	}

@@ -25,7 +25,7 @@ public class Dashboard extends QuizActivity {
 		} else {
 			new Task().execute();
 			startActivity(new Intent(Dashboard.this, Login.class));
-
+			this.finish();
 		}
 	}
 

@@ -1,10 +1,9 @@
 package com.silversages.quiz.activities;
 
-import com.silversages.quiz.abstracts.QuizActivity;
-import com.silversages.quiz.activities.R;
-
-import android.app.Activity;
 import android.os.Bundle;
+
+import com.silversages.quiz.R;
+import com.silversages.quiz.abstracts.QuizActivity;
 
 public class Play extends QuizActivity {
 	@Override

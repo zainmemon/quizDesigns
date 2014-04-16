@@ -12,7 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.silversages.quiz.activities.R;
+import com.silversages.quiz.R;
 import com.silversages.quiz.object.DashboardObject;
 
 public class DashboardAdapter extends ArrayAdapter<DashboardObject> {

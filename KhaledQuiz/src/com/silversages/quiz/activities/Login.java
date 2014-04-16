@@ -22,6 +22,7 @@ import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
+import com.silversages.quiz.R;
 import com.silversages.quiz.abstracts.QuizActivity;
 
 public class Login extends QuizActivity implements ConnectionCallbacks,
@@ -58,6 +59,7 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
+		SetupView();
 		mGoogleApiClient = new GoogleApiClient.Builder(this)
 				.addConnectionCallbacks(this)
 				.addOnConnectionFailedListener(this).addApi(Plus.API, null)

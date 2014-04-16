@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.silversages.quiz.activities"
+    package="com.silversages.quiz"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -25,18 +25,18 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name="Login"
+            android:name=".activities.Login"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="Play"
+            android:name=".activities.Play"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="Nonetwork"
+            android:name=".activities.NoNetwork"
             android:label="@string/app_name" >
         </activity>
-        <activity android:name="Dashboard" >
+        <activity android:name=".activities.Dashboard" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

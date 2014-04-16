@@ -2,6 +2,7 @@ package com.silversages.quiz.activities;
 
 import android.os.Bundle;
 
+import com.silversages.quiz.R;
 import com.silversages.quiz.abstracts.QuizActivity;
 
 public class NoNetwork extends QuizActivity {
