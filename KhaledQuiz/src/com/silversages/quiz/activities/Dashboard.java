@@ -2,10 +2,12 @@ package com.silversages.quiz.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 
 import com.silversages.quiz.abstracts.QuizActivity;
+import com.silversages.quiz.util.SQLHelper;
 
 public class Dashboard extends QuizActivity {
 
@@ -21,7 +23,7 @@ public class Dashboard extends QuizActivity {
 			SetupView();
 
 		} else {
-
+			new Task().execute();
 			startActivity(new Intent(Dashboard.this, Login.class));
 
 		}
@@ -42,6 +44,18 @@ public class Dashboard extends QuizActivity {
 	@Override
 	protected void SetupView() {
 		// TODO Auto-generated method stub
+
+	}
+
+	class Task extends AsyncTask<Void, Void, Void> {
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			// TODO Auto-generated method stub
+			SQLHelper.SetupDB(getBaseContext());
+
+			return null;
+		}
 
 	}
 
