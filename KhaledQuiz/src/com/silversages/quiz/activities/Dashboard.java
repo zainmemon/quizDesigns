@@ -1,11 +1,13 @@
 package com.silversages.quiz.activities;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 
+import com.silversages.quiz.QuizApp;
 import com.silversages.quiz.abstracts.QuizActivity;
 import com.silversages.quiz.util.SQLHelper;
 
@@ -15,7 +17,8 @@ public class Dashboard extends QuizActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-
+		registerReceiver(QuizApp.connRcv, new IntentFilter(
+				Intent.ACTION_POWER_CONNECTED));
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(this);
 		if (prefs.getBoolean("first_time", false)) {

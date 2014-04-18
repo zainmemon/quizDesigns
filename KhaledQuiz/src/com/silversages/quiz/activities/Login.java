@@ -20,17 +20,20 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 import com.silversages.quiz.R;
+import com.silversages.quiz.R.id;
+import com.silversages.quiz.R.layout;
+import com.silversages.quiz.R.menu;
 import com.silversages.quiz.abstracts.QuizActivity;
 
 public class Login extends QuizActivity implements ConnectionCallbacks,
 		OnConnectionFailedListener {
 
 	private static final int RC_SIGN_IN = 0;
-	// Logcat tag
-	private static final String TAG = "MainActivity";
 
 	// Profile pic image size in pixels
 	private static final int PROFILE_PIC_SIZE = 400;
@@ -54,6 +57,7 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 	TextView text_signup;
 	ImageView image_gmail;
 	ImageView image_facebook;
+	private Bitmap imgProfilePic;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +109,18 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 		image_gmail = (ImageView) findViewById(R.id.gmail);
 
 		image_facebook = (ImageView) findViewById(R.id.fb);
+		
+		image_facebook.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+			
+				
+				revokeGplusAccess();
+			}
+		});
+		
 
 		image_gmail.setOnClickListener(new OnClickListener() {
 
@@ -138,6 +154,15 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 			}
 		}
 
+	}
+
+	private void signOutFromGplus() {
+		if (mGoogleApiClient.isConnected()) {
+			Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
+			mGoogleApiClient.disconnect();
+			mGoogleApiClient.connect();
+
+		}
 	}
 
 	@Override
@@ -180,7 +205,7 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 						personPhotoUrl.length() - 2)
 						+ PROFILE_PIC_SIZE;
 
-				// new LoadProfileImage(imgProfilePic).execute(personPhotoUrl);
+				new LoadProfileImage(imgProfilePic).execute(personPhotoUrl);
 
 			} else {
 				Toast.makeText(getApplicationContext(),
@@ -192,9 +217,9 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 	}
 
 	private class LoadProfileImage extends AsyncTask<String, Void, Bitmap> {
-		ImageView bmImage;
+		Bitmap bmImage;
 
-		public LoadProfileImage(ImageView bmImage) {
+		public LoadProfileImage(Bitmap bmImage) {
 			this.bmImage = bmImage;
 		}
 
@@ -212,7 +237,7 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 		}
 
 		protected void onPostExecute(Bitmap result) {
-			bmImage.setImageBitmap(result);
+			bmImage = (result);
 		}
 	}
 
@@ -221,6 +246,7 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 		mSignInClicked = false;
 		Toast.makeText(this, "User is connected!", Toast.LENGTH_LONG).show();
 
+	
 		// Get user's information
 		getProfileInformation();
 
@@ -233,6 +259,25 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 		if (!mGoogleApiClient.isConnecting()) {
 			mSignInClicked = true;
 			resolveSignInError();
+		}
+	}
+
+	/**
+	 * Revoking access from google
+	 * */
+	private void revokeGplusAccess() {
+		if (mGoogleApiClient.isConnected()) {
+			Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
+			Plus.AccountApi.revokeAccessAndDisconnect(mGoogleApiClient)
+					.setResultCallback(new ResultCallback<Status>() {
+						@Override
+						public void onResult(Status arg0) {
+							Log.e("TAG", "User access revoked!");
+							mGoogleApiClient.connect();
+
+						}
+
+					});
 		}
 	}
 

@@ -1,5 +1,7 @@
 package com.silversages.quiz;
 
+import com.silversages.quiz.broadcastReceiver.ConnectionChangeReceiver;
+
 import android.app.Application;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,6 +9,9 @@ import android.database.sqlite.SQLiteDatabase;
 public class QuizApp extends Application {
 	public static SQLiteDatabase db;
 	public static Context context;
+	public static int hasNetwork = 1;
+
+	public static ConnectionChangeReceiver connRcv;
 
 	public static SQLiteDatabase getDb() {
 		return db;
@@ -37,6 +42,7 @@ public class QuizApp extends Application {
 		// TODO Auto-generated method stub
 		super.onTerminate();
 		db.close();
+		unregisterReceiver(connRcv);
 	}
 
 }
