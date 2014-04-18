@@ -31,6 +31,7 @@ public class NoNetwork extends Activity {
 		// Intent i = new Intent(this, Dashboard.class);
 		// i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		// startActivity(i);
+		QuizApp.hasNetwork = 1;
 	}
 
 	protected void SetupView() {

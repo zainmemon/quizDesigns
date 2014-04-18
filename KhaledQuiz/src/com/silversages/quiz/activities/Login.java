@@ -239,7 +239,7 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 
 		protected void onPostExecute(Bitmap result) {
 			bmImage = (result);
-			PostExecute();
+			PreExecute();
 		}
 	}
 

@@ -19,7 +19,7 @@ public class ConnectionChangeReceiver extends BroadcastReceiver {
 		if (activeNetInfo == null && QuizApp.hasNetwork == 1) {
 			QuizApp.hasNetwork = 0;
 			Intent i = new Intent(context, NoNetwork.class);
-			i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			//i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			context.startActivity(i);
 		} else {
 			QuizApp.hasNetwork = 1;
