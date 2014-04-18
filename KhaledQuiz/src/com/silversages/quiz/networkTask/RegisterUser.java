@@ -1,8 +1,9 @@
 package com.silversages.quiz.networkTask;
 
 import android.graphics.Bitmap;
+import android.os.AsyncTask;
 
-public class RegisterUser {
+public class RegisterUser extends NetworkTask {
 
 	String email;
 	String name;
@@ -47,6 +48,35 @@ public class RegisterUser {
 		this.name = name;
 		this.via = via;
 		this.pic = pic;
+	}
+
+	@Override
+	public void PerformTask() {
+		// TODO Auto-generated method stub
+
+		new Task().execute();
+	}
+
+	class Task extends AsyncTask<Void, Void, Void> {
+
+		@Override
+		protected void onPostExecute(Void result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+		}
+
+		@Override
+		protected void onPreExecute() {
+			// TODO Auto-generated method stub
+			super.onPreExecute();
+		}
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
 	}
 
 }

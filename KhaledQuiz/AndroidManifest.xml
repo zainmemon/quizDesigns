@@ -46,14 +46,7 @@
             </intent-filter>
         </activity>
 
-        <receiver
-            android:name="com.silversages.quiz.broadcastReceiver.ConnectionChangeReceiver"
-            android:label="NetworkConnection" >
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-                 <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
-            </intent-filter>
-        </receiver>
+
     </application>
 
 </manifest>

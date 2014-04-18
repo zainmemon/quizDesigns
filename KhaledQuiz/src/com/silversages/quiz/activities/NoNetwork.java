@@ -1,15 +1,18 @@
 package com.silversages.quiz.activities;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import com.silversages.quiz.QuizApp;
 import com.silversages.quiz.R;
 import com.silversages.quiz.abstracts.QuizActivity;
 import com.silversages.quiz.util.NetworkManager;
 
-public class NoNetwork extends QuizActivity {
+public class NoNetwork extends Activity {
 
 	TextView refresh;
 
@@ -22,18 +25,14 @@ public class NoNetwork extends QuizActivity {
 	}
 
 	@Override
-	protected void PostExecute() {
+	public void onBackPressed() {
 		// TODO Auto-generated method stub
-
+		super.onBackPressed();
+		// Intent i = new Intent(this, Dashboard.class);
+		// i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		// startActivity(i);
 	}
 
-	@Override
-	protected void PreExecute() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	protected void SetupView() {
 		// TODO Auto-generated method stub
 
@@ -45,6 +44,8 @@ public class NoNetwork extends QuizActivity {
 				// TODO Auto-generated method stub
 
 				if (NetworkManager.IsConnected()) {
+					QuizApp.hasNetwork = 1;
+					startActivity(new Intent(NoNetwork.this, Dashboard.class));
 					NoNetwork.this.finish();
 				}
 

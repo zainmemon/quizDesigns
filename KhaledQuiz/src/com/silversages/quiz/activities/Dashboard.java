@@ -17,10 +17,11 @@ public class Dashboard extends QuizActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		registerReceiver(QuizApp.connRcv, new IntentFilter(
-				Intent.ACTION_POWER_CONNECTED));
+		
+
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(this);
+
 		if (prefs.getBoolean("first_time", false)) {
 
 			SetupView();

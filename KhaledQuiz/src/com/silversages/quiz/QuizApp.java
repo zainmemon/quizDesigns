@@ -11,7 +11,7 @@ public class QuizApp extends Application {
 	public static Context context;
 	public static int hasNetwork = 1;
 
-	public static ConnectionChangeReceiver connRcv;
+	public static ConnectionChangeReceiver connRcv = new ConnectionChangeReceiver();
 
 	public static SQLiteDatabase getDb() {
 		return db;
@@ -42,7 +42,7 @@ public class QuizApp extends Application {
 		// TODO Auto-generated method stub
 		super.onTerminate();
 		db.close();
-		unregisterReceiver(connRcv);
+		
 	}
 
 }
