@@ -29,6 +29,7 @@ import com.silversages.quiz.R.id;
 import com.silversages.quiz.R.layout;
 import com.silversages.quiz.R.menu;
 import com.silversages.quiz.abstracts.QuizActivity;
+import com.silversages.quiz.networkTask.RegisterUser;
 
 public class Login extends QuizActivity implements ConnectionCallbacks,
 		OnConnectionFailedListener {
@@ -82,6 +83,8 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 	protected void PostExecute() {
 		// TODO Auto-generated method stub
 
+		//RegisterUser user = new RegisterUser(email, name, via, pic);
+
 	}
 
 	@Override
@@ -109,18 +112,16 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 		image_gmail = (ImageView) findViewById(R.id.gmail);
 
 		image_facebook = (ImageView) findViewById(R.id.fb);
-		
+
 		image_facebook.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-			
-				
+
 				revokeGplusAccess();
 			}
 		});
-		
 
 		image_gmail.setOnClickListener(new OnClickListener() {
 
@@ -238,6 +239,7 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 
 		protected void onPostExecute(Bitmap result) {
 			bmImage = (result);
+			PostExecute();
 		}
 	}
 
@@ -246,7 +248,6 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 		mSignInClicked = false;
 		Toast.makeText(this, "User is connected!", Toast.LENGTH_LONG).show();
 
-	
 		// Get user's information
 		getProfileInformation();
 

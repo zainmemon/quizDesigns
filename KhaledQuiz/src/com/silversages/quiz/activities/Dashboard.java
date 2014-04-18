@@ -17,7 +17,6 @@ public class Dashboard extends QuizActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
 
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(this);
@@ -56,7 +55,7 @@ public class Dashboard extends QuizActivity {
 		@Override
 		protected Void doInBackground(Void... params) {
 			// TODO Auto-generated method stub
-			SQLHelper.SetupDB(getBaseContext());
+			SQLHelper.SetupDB();
 
 			return null;
 		}
