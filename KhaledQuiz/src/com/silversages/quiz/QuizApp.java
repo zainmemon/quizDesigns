@@ -1,6 +1,7 @@
 package com.silversages.quiz;
 
 import com.silversages.quiz.broadcastReceiver.ConnectionChangeReceiver;
+import com.silversages.quiz.object.User;
 
 import android.app.Application;
 import android.content.Context;
@@ -10,6 +11,7 @@ public class QuizApp extends Application {
 	public static SQLiteDatabase db;
 	public static Context context;
 	public static int hasNetwork = 1;
+	public static User user = new User();
 
 	public static ConnectionChangeReceiver connRcv = new ConnectionChangeReceiver();
 
@@ -42,7 +44,7 @@ public class QuizApp extends Application {
 		// TODO Auto-generated method stub
 		super.onTerminate();
 		db.close();
-		
+
 	}
 
 }

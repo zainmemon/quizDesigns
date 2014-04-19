@@ -13,20 +13,21 @@ public class Play extends QuizActivity {
 	}
 
 	@Override
-	protected void PostExecute() {
+	public void PostExecute() {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	protected void PreExecute() {
+	public void PreExecute() {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	protected void SetupView() {
+	public void SetupView() {
 		// TODO Auto-generated method stub
 
 	}
+
 }

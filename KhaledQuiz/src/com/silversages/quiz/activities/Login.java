@@ -3,11 +3,13 @@ package com.silversages.quiz.activities;
 import java.io.InputStream;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.IntentSender.SendIntentException;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -24,12 +26,14 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
+import com.silversages.quiz.QuizApp;
 import com.silversages.quiz.R;
 import com.silversages.quiz.R.id;
 import com.silversages.quiz.R.layout;
 import com.silversages.quiz.R.menu;
 import com.silversages.quiz.abstracts.QuizActivity;
 import com.silversages.quiz.networkTask.RegisterUser;
+import com.silversages.quiz.object.User;
 
 public class Login extends QuizActivity implements ConnectionCallbacks,
 		OnConnectionFailedListener {
@@ -58,7 +62,8 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 	TextView text_signup;
 	ImageView image_gmail;
 	ImageView image_facebook;
-	private Bitmap imgProfilePic;
+	private String personPhotoUrl;
+	private User user = new User();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -80,21 +85,32 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 	}
 
 	@Override
-	protected void PostExecute() {
+	public void PostExecute() {
 		// TODO Auto-generated method stub
 
-		//RegisterUser user = new RegisterUser(email, name, via, pic);
+		db.registerUser(user);
+		SharedPreferences prefs = PreferenceManager
+				.getDefaultSharedPreferences(Login.this);
+		SharedPreferences.Editor editor = prefs.edit();
+		editor.putBoolean("first_time", true);
+		editor.commit();
+
+		startActivity(new Intent(Login.this, Dashboard.class));
+		this.finish();
 
 	}
 
 	@Override
-	protected void PreExecute() {
+	public void PreExecute() {
 		// TODO Auto-generated method stub
+
+		RegisterUser regUser = new RegisterUser(user);
+		regUser.PerformTask(Login.this);
 
 	}
 
 	@Override
-	protected void SetupView() {
+	public void SetupView() {
 		// TODO Auto-generated method stub
 
 		image_signIn = (ImageView) findViewById(R.id.image_signIn);
@@ -187,13 +203,13 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 			if (Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null) {
 				Person currentPerson = Plus.PeopleApi
 						.getCurrentPerson(mGoogleApiClient);
-				String personName = currentPerson.getDisplayName();
-				String personPhotoUrl = currentPerson.getImage().getUrl();
-				String personGooglePlusProfile = currentPerson.getUrl();
-				String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
-
-				Log.e("TAG", "Name: " + personName + ", plusProfile: "
-						+ personGooglePlusProfile + ", email: " + email
+				user.personName = currentPerson.getDisplayName();
+				personPhotoUrl = currentPerson.getImage().getUrl();
+				user.personProfile = currentPerson.getUrl();
+				user.email = Plus.AccountApi.getAccountName(mGoogleApiClient);
+				user.via = "Google";
+				Log.e("TAG", "Name: " + user.personName + ", plusProfile: "
+						+ user.personProfile + ", email: " + user.email
 						+ ", Image: " + personPhotoUrl);
 
 				// txtName.setText(personName);
@@ -206,7 +222,8 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 						personPhotoUrl.length() - 2)
 						+ PROFILE_PIC_SIZE;
 
-				new LoadProfileImage(imgProfilePic).execute(personPhotoUrl);
+				new LoadProfileImage(user.imgProfilePic)
+						.execute(personPhotoUrl);
 
 			} else {
 				Toast.makeText(getApplicationContext(),

@@ -1,68 +1,77 @@
 package com.silversages.quiz.networkTask;
 
+import java.util.ArrayList;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.ParseException;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.silversages.quiz.activities.Login;
+import com.silversages.quiz.object.User;
+import com.silversages.quiz.util.JSONParser;
 
 public class RegisterUser extends NetworkTask {
 
-	String email;
-	String name;
-	String via;
-	Bitmap pic;
+	Activity activity;
+	User user;
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getVia() {
-		return via;
-	}
-
-	public void setVia(String via) {
-		this.via = via;
-	}
-
-	public Bitmap getPic() {
-		return pic;
-	}
-
-	public void setPic(Bitmap pic) {
-		this.pic = pic;
-	}
-
-	public RegisterUser(String email, String name, String via, Bitmap pic) {
+	public RegisterUser(User user) {
 		super();
-		this.email = email;
-		this.name = name;
-		this.via = via;
-		this.pic = pic;
+		this.user = user;
 	}
 
 	@Override
-	public void PerformTask() {
+	public void PerformTask(Activity activity) {
 		// TODO Auto-generated method stub
-
+		this.activity = activity;
 		new Task().execute();
 	}
 
-	class Task extends AsyncTask<Void, Void, Void> {
+	class Task extends AsyncTask<Void, Void, JSONObject> {
 
 		@Override
-		protected void onPostExecute(Void result) {
+		protected void onPostExecute(JSONObject result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
+
+			try {
+				if (result != null) {
+					JSONObject json_data = result;
+
+					int success = json_data.getInt("success");
+					Log.d("QuizApp", "Result: " + success);
+
+					if (success == 1) {
+						Log.d("QuizApp", "Insertion Successful");
+						((Login) activity).PostExecute();
+					} else {
+						Log.d("QuizApp", "Couldnot connect to the server");
+						Toast.makeText(activity,
+								"Couldnot connect to the server",
+								Toast.LENGTH_LONG).show();
+					}
+				}
+
+			} catch (ParseException e1) {
+				e1.printStackTrace();
+				Toast.makeText(activity, "Couldnot connect to the server",
+						Toast.LENGTH_LONG).show();
+
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				Toast.makeText(activity, "Couldnot connect to the server",
+						Toast.LENGTH_LONG).show();
+
+			}
+
 		}
 
 		@Override
@@ -72,9 +81,17 @@ public class RegisterUser extends NetworkTask {
 		}
 
 		@Override
-		protected Void doInBackground(Void... params) {
+		protected JSONObject doInBackground(Void... params) {
 			// TODO Auto-generated method stub
-			return null;
+
+			ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+			JSONParser getData = new JSONParser();
+
+			JSONObject result = getData.makeHttpRequest(
+					"http://www.lol-ism.com/radioiba/get_all_message.php",
+					"POST", nameValuePairs);
+
+			return result;
 		}
 
 	}

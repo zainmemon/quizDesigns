@@ -32,23 +32,7 @@ public class Dashboard extends QuizActivity {
 		}
 	}
 
-	@Override
-	protected void PostExecute() {
-		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	protected void PreExecute() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	protected void SetupView() {
-		// TODO Auto-generated method stub
-
-	}
 
 	class Task extends AsyncTask<Void, Void, Void> {
 
@@ -60,6 +44,30 @@ public class Dashboard extends QuizActivity {
 			return null;
 		}
 
+	}
+
+
+
+	@Override
+	public void PostExecute() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void PreExecute() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void SetupView() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

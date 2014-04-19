@@ -1,11 +1,16 @@
 package com.silversages.quiz.util;
 
+import java.io.ByteArrayOutputStream;
+
 import com.silversages.quiz.QuizApp;
+import com.silversages.quiz.object.User;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
 
 public class SQLHelper {
@@ -43,6 +48,26 @@ public class SQLHelper {
 		insertValues.put("number", no);
 		insertValues.put("displayPic", pic);
 		db.insert("Contact", null, insertValues);
+		Log.d("QuizApp--SQLHelper", "Contact--Data inserted");
+
+	}
+
+	public void registerUser(User user) {
+		// TODO Auto-generated method stub
+
+		Log.d("QuizApp--SQLHelper", "Contact--Data");
+		byte[] byteArray = null;
+		if (user.imgProfilePic != null) {
+			ByteArrayOutputStream stream = new ByteArrayOutputStream();
+			((Bitmap) user.imgProfilePic).compress(Bitmap.CompressFormat.PNG,
+					50, stream);
+			byteArray = stream.toByteArray();
+		}
+		ContentValues insertValues = new ContentValues();
+		insertValues.put("name", user.personName);
+		insertValues.put("email", user.email);
+		insertValues.put("displayPic", byteArray);
+		db.insert("User", null, insertValues);
 		Log.d("QuizApp--SQLHelper", "Contact--Data inserted");
 
 	}

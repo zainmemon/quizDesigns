@@ -14,18 +14,18 @@ public abstract class QuizActivity extends Activity {
 
 	protected SQLHelper db;
 
-	protected abstract void PostExecute();
+	public abstract void PostExecute();
 
-	protected abstract void PreExecute();
+	public abstract void PreExecute();
 
-	protected abstract void SetupView();
+	public abstract void SetupView();
 
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
 		registerReceiver(QuizApp.connRcv, new IntentFilter(
-				"android.net.conn.CONNECTIVITY_CHANGE"));
+				"android.net.wifi.WIFI_STATE_CHANGED"));
 		if (!NetworkManager.IsConnected() && QuizApp.hasNetwork == 1) {
 			QuizApp.hasNetwork = 0;
 			startActivity(new Intent(QuizActivity.this, NoNetwork.class));
