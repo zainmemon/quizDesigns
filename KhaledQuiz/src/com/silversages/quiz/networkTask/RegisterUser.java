@@ -4,22 +4,23 @@ import java.util.ArrayList;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.ParseException;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.silversages.quiz.QuizApp;
 import com.silversages.quiz.activities.Login;
 import com.silversages.quiz.object.User;
 import com.silversages.quiz.util.JSONParser;
 
 public class RegisterUser extends NetworkTask {
 
-	Activity activity;
+	Login activity;
 	User user;
 
 	public RegisterUser(User user) {
@@ -30,7 +31,7 @@ public class RegisterUser extends NetworkTask {
 	@Override
 	public void PerformTask(Activity activity) {
 		// TODO Auto-generated method stub
-		this.activity = activity;
+		this.activity = (Login)activity;
 		new Task().execute();
 	}
 
@@ -84,12 +85,15 @@ public class RegisterUser extends NetworkTask {
 		protected JSONObject doInBackground(Void... params) {
 			// TODO Auto-generated method stub
 
-			ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+			ArrayList<NameValuePair> param = new ArrayList<NameValuePair>();
+			param.add(new BasicNameValuePair("name", user.personName));
+			param.add(new BasicNameValuePair("email", user.email));
+			param.add(new BasicNameValuePair("via", user.via));
+
 			JSONParser getData = new JSONParser();
 
-			JSONObject result = getData.makeHttpRequest(
-					"http://www.lol-ism.com/radioiba/get_all_message.php",
-					"POST", nameValuePairs);
+			JSONObject result = getData.makeHttpRequest(QuizApp.serverPath
+					+ "register_user.php", "GET", param);
 
 			return result;
 		}

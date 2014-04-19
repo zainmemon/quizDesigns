@@ -8,7 +8,6 @@ public abstract class NetworkTask {
 
 	SQLiteDatabase db = QuizApp.db;
 	int Success = 0;
-
 	public abstract void PerformTask(Activity activity);
 
 }

@@ -17,8 +17,8 @@ public class SQLHelper {
 	static SQLiteDatabase db = QuizApp.db;
 
 	public static void SetupDB() {
-		db.delete("User", null, null);
-		db.delete("FriendList", null, null);
+		//db.delete("User", null, null);
+		//db.delete("FriendList", null, null);
 		db.execSQL("CREATE TABLE IF NOT EXISTS User(email TEXT,name TEXT, displayPic BLOB);");
 		db.execSQL("CREATE TABLE IF NOT EXISTS FriendList(ID INTEGER PRIMARY KEY, email TEXT,name TEXT, displayPic BLOB);");
 	}
