@@ -7,10 +7,10 @@
 
     <ImageView
         android:id="@+id/image_networkPoll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:src="@drawable/poll_signals" />
 
     <TextView
@@ -22,7 +22,7 @@
         android:layout_marginTop="5dp"
         android:text="OOPS !!"
         android:textColor="#dd4c39"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textStyle="italic|bold" />
 
     <TextView
@@ -31,7 +31,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/text_warning"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
         android:gravity="center"
         android:text="YOU SEEM TO HAVE \nNO NETWORK CONNECTION.\nTAP TO TRY AGAIN !"
         android:textColor="#dd4c39"
@@ -43,7 +42,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/text_guide"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
         android:background="@drawable/border"
         android:gravity="center"
         android:paddingLeft="30dp"

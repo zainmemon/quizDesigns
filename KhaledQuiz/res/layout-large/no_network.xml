@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/poll_signals" />
 
     <TextView
@@ -22,7 +22,7 @@
         android:layout_marginTop="5dp"
         android:text="OOPS !!"
         android:textColor="#dd4c39"
-        android:textSize="30sp"
+        android:textSize="35sp"
         android:textStyle="italic|bold" />
 
     <TextView
@@ -35,7 +35,7 @@
         android:gravity="center"
         android:text="YOU SEEM TO HAVE \nNO NETWORK CONNECTION.\nTAP TO TRY AGAIN !"
         android:textColor="#dd4c39"
-        android:textSize="20sp" />
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/tryAgain"
@@ -50,7 +50,7 @@
         android:paddingRight="30dp"
         android:text="TRY AGAIN"
         android:textColor="#dd4c39"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textStyle="italic|bold" />
 
 </RelativeLayout>
