@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:src="@drawable/logo" />
 
     <EditText
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/password"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp" >
+        android:layout_marginTop="10dp" >
 
         <TableRow
             android:id="@+id/tableRow1"
@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:text="SIGN IN"
                 android:textColor="#ba1d47"
-                android:textSize="20sp" />
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/text_signUp"
@@ -87,7 +87,7 @@
                 android:layout_marginLeft="25dp"
                 android:text="SIGN UP"
                 android:textColor="#ba1d47"
-                android:textSize="20sp" />
+                android:textSize="22sp" />
         </TableRow>
     </TableLayout>
 
@@ -97,13 +97,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tableLayout1"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
         android:text="CONNECT WITH"
         android:textColor="#ba1d47" />
 
     <ImageView
         android:id="@+id/image_connectWith"
         android:layout_width="wrap_content"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/text_connectWith"
         android:layout_centerHorizontal="true"
         android:src="@drawable/connect" />
@@ -118,7 +119,7 @@
         <ImageView
             android:id="@+id/gmail"
             android:layout_width="fill_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#dd4b39"
             android:padding="15dp"
@@ -127,7 +128,7 @@
         <ImageView
             android:id="@+id/fb"
             android:layout_width="fill_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#39599f"
             android:padding="15dp"

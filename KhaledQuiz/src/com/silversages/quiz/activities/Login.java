@@ -3,8 +3,8 @@ package com.silversages.quiz.activities;
 import java.io.InputStream;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.IntentSender.SendIntentException;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -17,6 +17,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -26,11 +27,7 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
-import com.silversages.quiz.QuizApp;
 import com.silversages.quiz.R;
-import com.silversages.quiz.R.id;
-import com.silversages.quiz.R.layout;
-import com.silversages.quiz.R.menu;
 import com.silversages.quiz.abstracts.QuizActivity;
 import com.silversages.quiz.networkTask.RegisterUser;
 import com.silversages.quiz.object.User;
@@ -114,17 +111,9 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 		// TODO Auto-generated method stub
 
 		image_signIn = (ImageView) findViewById(R.id.image_signIn);
-		image_signIn.setX(-80);
-
 		image_signUp = (ImageView) findViewById(R.id.image_signUp);
-		image_signUp.setX(-20);
-
 		text_signin = (TextView) findViewById(R.id.text_signIn);
-		text_signin.setX(-80);
-
 		text_signup = (TextView) findViewById(R.id.text_signUp);
-		text_signup.setX(-45);
-
 		image_gmail = (ImageView) findViewById(R.id.gmail);
 
 		image_facebook = (ImageView) findViewById(R.id.fb);
