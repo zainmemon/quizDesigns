@@ -103,7 +103,7 @@
     <ImageView
         android:id="@+id/image_connectWith"
         android:layout_width="wrap_content"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/text_connectWith"
         android:layout_centerHorizontal="true"
         android:src="@drawable/connect" />
