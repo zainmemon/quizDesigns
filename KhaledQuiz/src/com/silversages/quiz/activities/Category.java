@@ -24,6 +24,8 @@ public class Category extends Activity {
 		ArrayList<CategoryObject> mylist = new ArrayList<CategoryObject>();
 
 		mylist.add(new CategoryObject("Cricket", this));
+		mylist.add(new CategoryObject("Football", this));
+		mylist.add(new CategoryObject("Politics", this));
 
 		CategoryAdaptor adaptor = new CategoryAdaptor(this, mylist);
 
