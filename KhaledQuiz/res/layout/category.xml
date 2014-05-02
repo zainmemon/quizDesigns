@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#006d82"
+    tools:context=".MainActivity" >
+
+    <RelativeLayout
+        android:id="@+id/searchbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/border"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/image_magnifying"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/magnifying_glass" />
+
+        <EditText
+            android:id="@+id/text_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_toRightOf="@id/image_magnifying"
+            android:hint="SEARCH YOUR TOPIC"
+            android:textColorHint="#de4b39"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:id="@+id/image_cross"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/text_search"
+            android:background="@drawable/cross" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/text_allTopics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchbar"
+        android:layout_centerHorizontal="true"
+        android:text="ALL TOPICS"
+        android:textColor="#de4b39"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <ListView
+        android:id="@+id/listview1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_allTopics" >
+    </ListView>
+
+</RelativeLayout>
