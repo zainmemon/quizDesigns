@@ -52,7 +52,7 @@ public class SQLHelper {
 
 	}
 
-	public void registerUser(User user) {
+	public static void registerUser(User user) {
 		// TODO Auto-generated method stub
 
 		Log.d("QuizApp--SQLHelper", "Contact--Data");

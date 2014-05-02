@@ -20,7 +20,7 @@ import com.silversages.quiz.util.JSONParser;
 
 public class RegisterUser extends NetworkTask {
 
-	Login activity;
+	Activity activity;
 	User user;
 
 	public RegisterUser(User user) {
@@ -31,7 +31,7 @@ public class RegisterUser extends NetworkTask {
 	@Override
 	public void PerformTask(Activity activity) {
 		// TODO Auto-generated method stub
-		this.activity = (Login)activity;
+		this.activity = activity;
 		new Task().execute();
 	}
 
@@ -51,7 +51,8 @@ public class RegisterUser extends NetworkTask {
 
 					if (success == 1) {
 						Log.d("QuizApp", "Insertion Successful");
-						((Login) activity).PostExecute();
+						
+						((Login)activity).PostExecute();
 					} else {
 						Log.d("QuizApp", "Couldnot connect to the server");
 						Toast.makeText(activity,

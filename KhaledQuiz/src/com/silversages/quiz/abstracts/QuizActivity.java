@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 
 import com.silversages.quiz.QuizApp;
-import com.silversages.quiz.activities.Dashboard;
 import com.silversages.quiz.activities.NoNetwork;
 import com.silversages.quiz.util.NetworkManager;
 import com.silversages.quiz.util.SQLHelper;
