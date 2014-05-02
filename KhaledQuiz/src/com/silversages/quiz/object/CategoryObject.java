@@ -1,16 +1,14 @@
 package com.silversages.quiz.object;
 
-import android.content.Context;
-
 public class CategoryObject {
 
+	private int ID;
 	private String Title;
-	private Context context;
 
-	public CategoryObject(String title, Context ctx) {
+	public CategoryObject(String title, int _ID) {
 
 		this.Title = title;
-		context = ctx;
+		ID = _ID;
 
 	}
 
@@ -18,8 +16,12 @@ public class CategoryObject {
 		return Title;
 	}
 
-	public Context getContext() {
-		return context;
+	public int getID() {
+		return ID;
+	}
+
+	public void setID(int iD) {
+		ID = iD;
 	}
 
 }

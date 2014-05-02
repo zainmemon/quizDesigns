@@ -3,6 +3,7 @@ package com.silversages.quiz.util;
 import java.io.ByteArrayOutputStream;
 
 import com.silversages.quiz.QuizApp;
+import com.silversages.quiz.object.CategoryObject;
 import com.silversages.quiz.object.User;
 
 import android.content.ContentValues;
@@ -17,15 +18,36 @@ public class SQLHelper {
 	static SQLiteDatabase db = QuizApp.db;
 
 	public static void SetupDB() {
-		//db.delete("User", null, null);
-		//db.delete("FriendList", null, null);
+		// db.delete("User", null, null);
+		// db.delete("FriendList", null, null);
 		db.execSQL("CREATE TABLE IF NOT EXISTS User(email TEXT,name TEXT, displayPic BLOB);");
 		db.execSQL("CREATE TABLE IF NOT EXISTS FriendList(ID INTEGER PRIMARY KEY, email TEXT,name TEXT, displayPic BLOB);");
+		db.execSQL("CREATE TABLE IF NOT EXISTS Category(ID INTEGER PRIMARY KEY,name TEXT);");
 	}
 
 	public static void clearData() {
 		db.delete("Preference", null, null);
 		Log.d(" QuizApp--SQLHelper", "Menu Item--Data Deleted");
+
+	}
+
+	public static void truncateCategory() {
+		db.delete("Category", null, null);
+		Log.d(" QuizApp--SQLHelper", "Category--Data Deleted");
+
+	}
+
+	public static void intsertCategory(CategoryObject[] object) {
+
+		ContentValues insertValues; 
+		for (int i = 0; i < object.length; i++) {
+
+			insertValues = new ContentValues();
+			insertValues.put("name", object[i].getName());
+			insertValues.put("ID", object[i].getID());
+			db.insert("Category", null, insertValues);
+		}
+		Log.d(" QuizApp--SQLHelper", "Category--Data inserted");
 
 	}
 
@@ -72,4 +94,9 @@ public class SQLHelper {
 
 	}
 
+	public static Cursor getDashboardCategoryList() {
+		// TODO Auto-generated method stub
+		Log.d(" QuizApp--SQLHelper", "Category--Querying Data");
+		return db.rawQuery("select * from Category", null);
+	}
 }

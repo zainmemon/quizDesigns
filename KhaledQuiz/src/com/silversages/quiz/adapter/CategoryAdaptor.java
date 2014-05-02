@@ -1,10 +1,5 @@
 package com.silversages.quiz.adapter;
 
-import java.util.ArrayList;
-
-import com.silversages.quiz.R;
-import com.silversages.quiz.object.CategoryObject;
-
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,23 +12,26 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.silversages.quiz.R;
+import com.silversages.quiz.object.CategoryObject;
+
 public class CategoryAdaptor extends BaseAdapter {
 
 	private Activity activity;
-	private ArrayList<CategoryObject> data;
+	private CategoryObject[] data;
 	private static LayoutInflater inflater = null;
 
 	// public ImageLoader imageLoader;
 
-	public CategoryAdaptor(Activity a, ArrayList<CategoryObject> chatRoom) {
+	public CategoryAdaptor(Activity a, CategoryObject[] _data) {
 		activity = a;
-		data = chatRoom;
+		data = _data;
 		inflater = (LayoutInflater) activity
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
 	public int getCount() {
-		return data.size();
+		return data.length;
 	}
 
 	public Object getItem(int position) {
@@ -78,7 +76,6 @@ public class CategoryAdaptor extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View vi = convertView;
 		if (convertView == null)
-
 			vi = inflater.inflate(R.layout.row_category, null);
 		TextView title = (TextView) vi.findViewById(R.id.text_titleFirst); // title
 		ImageView arrow = (ImageView) vi.findViewById(R.id.image_down_arrow);
@@ -88,10 +85,10 @@ public class CategoryAdaptor extends BaseAdapter {
 				.findViewById(R.id.firstcollapsed);
 		collapsible.setVisibility(View.GONE);
 
-		CategoryObject list = data.get(position);
-		c = list.getContext();
+		CategoryObject _object = data[(position)];
+		c = activity.getBaseContext();
 
-		title.setText(list.getName());
+		title.setText(_object.getName());
 		arrow.setOnClickListener(new View.OnClickListener() {
 
 			@Override
