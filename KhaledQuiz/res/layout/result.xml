@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/player1_picture"
             android:layout_marginLeft="30dp"
-            android:src="@drawable/flag1" />
+            android:src="@drawable/flag_first" />
 
         <TextView
             android:id="@+id/player1_points"
@@ -119,7 +119,7 @@
             android:layout_alignParentRight="true"
             android:layout_below="@id/player2_picture"
             android:layout_marginRight="25dp"
-            android:src="@drawable/flag2" />
+            android:src="@drawable/flag_second" />
 
         <TextView
             android:id="@+id/player2_points"
