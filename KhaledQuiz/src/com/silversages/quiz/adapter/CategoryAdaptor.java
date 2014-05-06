@@ -2,17 +2,21 @@ package com.silversages.quiz.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.sax.StartElementListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.silversages.quiz.R;
+import com.silversages.quiz.activities.Game_status;
 import com.silversages.quiz.object.CategoryObject;
 
 public class CategoryAdaptor extends BaseAdapter {
@@ -79,6 +83,7 @@ public class CategoryAdaptor extends BaseAdapter {
 			vi = inflater.inflate(R.layout.row_category, null);
 		TextView title = (TextView) vi.findViewById(R.id.text_titleFirst); // title
 		ImageView arrow = (ImageView) vi.findViewById(R.id.image_down_arrow);
+		ImageView play = (ImageView) vi.findViewById(R.id.image_play);
 		final Context c;
 
 		final RelativeLayout collapsible = (RelativeLayout) vi
@@ -89,6 +94,18 @@ public class CategoryAdaptor extends BaseAdapter {
 		c = activity.getBaseContext();
 
 		title.setText(_object.getName());
+
+		play.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				Intent i = new Intent(activity,Game_status.class);
+				activity.startActivity(i);
+			}
+		});
+
 		arrow.setOnClickListener(new View.OnClickListener() {
 
 			@Override
