@@ -19,7 +19,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/logo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
         android:scrollbarStyle="outsideOverlay" />
 
     <RelativeLayout
@@ -37,7 +36,7 @@
                 android:id="@+id/player1_picture"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="5dp"
                 android:src="@drawable/player_picture" />
 
             <TextView
@@ -45,20 +44,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@id/player1_picture"
                 android:text="Player Name"
                 android:textColor="#de4b39"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <ProgressBar
-                android:id="@+id/ProgressBar"
+                android:id="@+id/player1_progress"
                 style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/player1_name"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="15dp"
                 android:layout_toRightOf="@id/player1_name"
                 android:indeterminate="false"
                 android:progressDrawable="@drawable/progressed" />
@@ -73,7 +72,7 @@
                 android:layout_toRightOf="@id/player1_picture"
                 android:text="Level [score]"
                 android:textColor="#de4b39"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <ImageView
@@ -81,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/player1_picture"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="15dp"
                 android:src="@drawable/flag_first" />
 
             <TextView
@@ -90,11 +89,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/player1_picture"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_toRightOf="@id/player1_picture"
                 android:text="POINTS:"
                 android:textColor="#de4b39"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
         </RelativeLayout>
 
@@ -121,8 +120,19 @@
                 android:layout_toLeftOf="@id/player2_picture"
                 android:text="Player Name"
                 android:textColor="#de4b39"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
+
+            <ProgressBar
+                android:id="@+id/player2_progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/player2_name"
+                android:layout_marginRight="15dp"
+                android:layout_toLeftOf="@id/player2_name"
+                android:indeterminate="false"
+                android:progressDrawable="@drawable/progressed" />
 
             <TextView
                 android:id="@+id/player2_score"
@@ -134,7 +144,7 @@
                 android:layout_toLeftOf="@id/player2_picture"
                 android:text="Level [score]"
                 android:textColor="#de4b39"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <ImageView
@@ -143,7 +153,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@id/player2_picture"
-                android:layout_marginRight="25dp"
+                android:layout_marginRight="15dp"
                 android:src="@drawable/flag_second" />
 
             <TextView
@@ -156,7 +166,7 @@
                 android:layout_toLeftOf="@id/player2_picture"
                 android:text="POINTS:"
                 android:textColor="#de4b39"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
         </RelativeLayout>
     </RelativeLayout>
