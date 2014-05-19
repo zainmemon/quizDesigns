@@ -137,12 +137,12 @@
 
     <ImageView
         android:id="@+id/play_again"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:layout_below="@id/player2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:src="@drawable/playagain" />
+        android:src="@drawable/play_again" />
 
     <TableLayout
         android:id="@+id/footer_share"

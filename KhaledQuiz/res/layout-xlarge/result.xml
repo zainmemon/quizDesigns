@@ -7,141 +7,148 @@
 
     <ImageView
         android:id="@+id/logo_result"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/pic_result" />
 
     <RelativeLayout
-        android:id="@+id/player1"
+        android:id="@+id/players"
         android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
         android:layout_height="wrap_content"
-        android:layout_below="@id/logo_result" >
+         >
 
-        <ImageView
-            android:id="@+id/player1_picture"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginLeft="20dp"
-            android:src="@drawable/player_white_pic" />
+        <RelativeLayout
+            android:id="@+id/player1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
-        <TextView
-            android:id="@+id/player1_name"
+            <ImageView
+                android:id="@+id/player1_picture"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/player_white_pic" />
+
+            <TextView
+                android:id="@+id/player1_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="40dp"
+                android:layout_toRightOf="@id/player1_picture"
+                android:text="Player Name"
+                android:textColor="#de4b39"
+                android:textSize="45sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/player1_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/player1_name"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/player1_picture"
+                android:text="Level [score]"
+                android:textColor="#de4b39"
+                android:textSize="45sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/player1_flag"
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_below="@id/player1_picture"
+                android:layout_marginLeft="45dp"
+                android:src="@drawable/flag_first" />
+
+            <TextView
+                android:id="@+id/player1_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/player1_score"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/player1_picture"
+                android:text="POINTS:"
+                android:textColor="#de4b39"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/player2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="40dp"
-            android:layout_toRightOf="@id/player1_picture"
-            android:text="Player Name"
-            android:textColor="#de4b39"
-            android:textSize="45sp"
-            android:textStyle="bold" />
+            android:layout_below="@id/player1" >
 
-        <TextView
-            android:id="@+id/player1_score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/player1_name"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:layout_toRightOf="@id/player1_picture"
-            android:text="Level [score]"
-            android:textColor="#de4b39"
-            android:textSize="45sp"
-            android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/player2_picture"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/player_white_pic" />
 
-        <ImageView
-            android:id="@+id/player1_flag"
-            android:layout_width="150dp"
-            android:layout_height="70dp"
-            android:layout_below="@id/player1_picture"
-            android:layout_marginLeft="45dp"
-            android:src="@drawable/flag_first" />
+            <TextView
+                android:id="@+id/player2_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_toLeftOf="@id/player2_picture"
+                android:text="Player Name"
+                android:textColor="#de4b39"
+                android:textSize="45sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/player1_points"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/player1_score"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:layout_toRightOf="@id/player1_picture"
-            android:text="POINTS:"
-            android:textColor="#de4b39"
-            android:textSize="40sp"
-            android:textStyle="bold" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/player2_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/player2_name"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_toLeftOf="@id/player2_picture"
+                android:text="Level [score]"
+                android:textColor="#de4b39"
+                android:textSize="45sp"
+                android:textStyle="bold" />
 
-    <RelativeLayout
-        android:id="@+id/player2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/player1" >
+            <ImageView
+                android:id="@+id/player2_flag"
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/player2_picture"
+                android:layout_marginRight="40dp"
+                android:src="@drawable/flag_second" />
 
-        <ImageView
-            android:id="@+id/player2_picture"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="5dp"
-            android:src="@drawable/player_white_pic" />
-
-        <TextView
-            android:id="@+id/player2_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="20dp"
-            android:layout_toLeftOf="@id/player2_picture"
-            android:text="Player Name"
-            android:textColor="#de4b39"
-            android:textSize="45sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/player2_score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/player2_name"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="5dp"
-            android:layout_toLeftOf="@id/player2_picture"
-            android:text="Level [score]"
-            android:textColor="#de4b39"
-            android:textSize="45sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/player2_flag"
-            android:layout_width="150dp"
-            android:layout_height="70dp"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/player2_picture"
-            android:layout_marginRight="40dp"
-            android:src="@drawable/flag_second" />
-
-        <TextView
-            android:id="@+id/player2_points"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/player2_score"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="5dp"
-            android:layout_toLeftOf="@id/player2_flag"
-            android:text="POINTS:"
-            android:textColor="#de4b39"
-            android:textSize="40sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/player2_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/player2_score"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="5dp"
+                android:layout_toLeftOf="@id/player2_flag"
+                android:text="POINTS:"
+                android:textColor="#de4b39"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
     </RelativeLayout>
 
     <ImageView
         android:id="@+id/play_again"
         android:layout_width="300dp"
-        android:layout_height="150dp"
-        android:layout_below="@id/player2"
+        android:layout_height="100dp"
+        android:layout_below="@id/players"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:src="@drawable/playagain" />
+        android:src="@drawable/play_again" />
 
     <TableLayout
         android:id="@+id/footer_share"
@@ -149,7 +156,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp" >
+        android:layout_marginBottom="15dp" >
 
         <TableRow
             android:id="@+id/row"
