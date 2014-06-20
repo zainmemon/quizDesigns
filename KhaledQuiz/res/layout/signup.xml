@@ -1,0 +1,141 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffac4e"
+    tools:context=".Login" >
+    
+
+    
+    
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/gmail"
+            android:layout_width="fill_parent"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:background="#dd4b39"
+            android:padding="15dp"
+            android:src="@drawable/google" />
+
+        <ImageView
+            android:id="@+id/fb"
+            android:layout_width="fill_parent"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:background="#39599f"
+            android:padding="15dp"
+            android:src="@drawable/faceboook" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/username"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/signupText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/logo"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@+id/logo"
+        android:text="SIGN UP"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/repassword"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/email"
+        android:layout_below="@+id/email"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="ENTER PASSWORD"
+        android:inputType="textPassword"
+        android:textColor="#000"
+        android:textColorHint="#F00" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/repassword"
+        android:layout_below="@+id/repassword"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="RE ENTER PASSWORD"
+        android:inputType="textPassword"
+        android:textColor="#000"
+        android:textColorHint="#F00" />
+
+    <ImageView
+        android:id="@+id/displayPic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signupText"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/player_picture" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/email"
+        android:layout_below="@+id/displayPic"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="ENTER NAME"
+        android:textColor="#000"
+        android:textColorHint="#F00" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/username"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="ENTER EMAIL"
+        android:textColor="#000"
+        android:textColorHint="#F00" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/text_challenge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/border"
+        android:hint="REGISTER"
+        android:textColorHint="#de4b39"
+        android:textSize="17sp" />
+    
+</RelativeLayout>

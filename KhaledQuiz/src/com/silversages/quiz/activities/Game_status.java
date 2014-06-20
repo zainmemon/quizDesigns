@@ -26,9 +26,8 @@ public class Game_status extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_status);
 
-		player1_progress = (ProgressBar) findViewById(R.id.ProgressBar);
+		player1_progress = (ProgressBar) findViewById(R.id.player1_progress);
 		player1_progress.setProgress(70);
-
 		level1 = (ImageView) findViewById(R.id.round_one);
 		level2 = (ImageView) findViewById(R.id.round_two);
 		level3 = (ImageView) findViewById(R.id.round_three);

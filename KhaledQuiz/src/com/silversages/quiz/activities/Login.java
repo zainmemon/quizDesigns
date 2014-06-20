@@ -1,6 +1,12 @@
 package com.silversages.quiz.activities;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.content.Intent;
 import android.content.IntentSender.SendIntentException;
@@ -18,6 +24,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.android.AsyncFacebookRunner;
+import com.facebook.android.AsyncFacebookRunner.RequestListener;
+import com.facebook.android.DialogError;
+import com.facebook.android.Facebook;
+import com.facebook.android.Facebook.DialogListener;
+import com.facebook.android.FacebookError;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -59,14 +71,29 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 	TextView text_signup;
 	ImageView image_gmail;
 	ImageView image_facebook;
+
 	private String personPhotoUrl;
 	private User user = new User();
+
+	// Your Facebook APP ID
+	private static String APP_ID = "1448657512016070"; // Replace your App ID
+														// here
+
+	// Instance of Facebook Class
+	private Facebook facebook;
+	private AsyncFacebookRunner mAsyncRunner;
+	String FILENAME = "AndroidSSO_data";
+	private SharedPreferences mPrefs;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
 		SetupView();
+
+		facebook = new Facebook(APP_ID);
+		mAsyncRunner = new AsyncFacebookRunner(facebook);
+
 		mGoogleApiClient = new GoogleApiClient.Builder(this)
 				.addConnectionCallbacks(this)
 				.addOnConnectionFailedListener(this).addApi(Plus.API, null)
@@ -106,6 +133,58 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 
 	}
 
+	public void loginToFacebook() {
+		mPrefs = getPreferences(MODE_PRIVATE);
+		String access_token = mPrefs.getString("access_token", null);
+		long expires = mPrefs.getLong("access_expires", 0);
+
+		if (access_token != null) {
+			facebook.setAccessToken(access_token);
+		}
+
+		if (expires != 0) {
+			facebook.setAccessExpires(expires);
+		}
+
+		if (!facebook.isSessionValid()) {
+			facebook.authorize(this,
+					new String[] { "email", "publish_stream" },
+					new DialogListener() {
+
+						@Override
+						public void onCancel() {
+							// Function to handle cancel event
+						}
+
+						@Override
+						public void onComplete(Bundle values) {
+							// Function to handle complete event
+							// Edit Preferences and update facebook acess_token
+							SharedPreferences.Editor editor = mPrefs.edit();
+							editor.putString("access_token",
+									facebook.getAccessToken());
+							editor.putLong("access_expires",
+									facebook.getAccessExpires());
+							editor.commit();
+							getProfileInformationFB();
+						}
+
+						@Override
+						public void onError(DialogError error) {
+							// Function to handle error
+
+						}
+
+						@Override
+						public void onFacebookError(FacebookError fberror) {
+							// Function to handle Facebook errors
+
+						}
+
+					});
+		}
+	}
+
 	@Override
 	public void SetupView() {
 		// TODO Auto-generated method stub
@@ -118,13 +197,24 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 
 		image_facebook = (ImageView) findViewById(R.id.fb);
 
+		image_signUp.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(new Intent(Login.this, SignUp.class));
+			}
+		});
+
 		image_facebook.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 
-				revokeGplusAccess();
+				loginToFacebook();
+
+				// revokeGplusAccess();
 			}
 		});
 
@@ -288,6 +378,36 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 		}
 	}
 
+	public void logoutFromFacebook() {
+		mAsyncRunner.logout(this, new RequestListener() {
+			@Override
+			public void onComplete(String response, Object state) {
+				Log.d("Logout from Facebook", response);
+				if (Boolean.parseBoolean(response) == true) {
+					// User successfully Logged out
+				}
+			}
+
+			@Override
+			public void onIOException(IOException e, Object state) {
+			}
+
+			@Override
+			public void onFileNotFoundException(FileNotFoundException e,
+					Object state) {
+			}
+
+			@Override
+			public void onMalformedURLException(MalformedURLException e,
+					Object state) {
+			}
+
+			@Override
+			public void onFacebookError(FacebookError e, Object state) {
+			}
+		});
+	}
+
 	/**
 	 * Method to resolve any signin errors
 	 * */
@@ -301,6 +421,55 @@ public class Login extends QuizActivity implements ConnectionCallbacks,
 				mGoogleApiClient.connect();
 			}
 		}
+	}
+
+	public void getProfileInformationFB() {
+		mAsyncRunner.request("me", new RequestListener() {
+			@Override
+			public void onComplete(String response, Object state) {
+				Log.d("Profile", response);
+				String json = response;
+				try {
+					JSONObject profile = new JSONObject(json);
+					// getting name of the user
+					final String nameFB = profile.getString("name");
+					// getting email of the user
+					final String emailFB = profile.getString("email");
+
+					runOnUiThread(new Runnable() {
+
+						@Override
+						public void run() {
+							Toast.makeText(getApplicationContext(),
+									"Name: " + nameFB + "\nEmail: " + emailFB,
+									Toast.LENGTH_LONG).show();
+						}
+
+					});
+
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+
+			@Override
+			public void onIOException(IOException e, Object state) {
+			}
+
+			@Override
+			public void onFileNotFoundException(FileNotFoundException e,
+					Object state) {
+			}
+
+			@Override
+			public void onMalformedURLException(MalformedURLException e,
+					Object state) {
+			}
+
+			@Override
+			public void onFacebookError(FacebookError e, Object state) {
+			}
+		});
 	}
 
 	@Override
